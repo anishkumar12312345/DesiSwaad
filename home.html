@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DesiSwaad Products</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: url('bg.jpg') no-repeat center/cover;
+}
+
+.overlay{
+  min-height:100vh;
+  background: rgba(0,0,0,0.7);
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+
+h1{
+  color:#ffcc00;
+}
+
+.products{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.card{
+  background: rgba(255,255,255,0.1);
+  padding:20px;
+  margin:15px;
+  border-radius:15px;
+  width:250px;
+}
+
+input{
+  width:80%;
+  padding:10px;
+  margin:10px;
+}
+
+button{
+  padding:10px 20px;
+  background:#ff9800;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h1>DesiSwaad Products 🍘</h1>
+
+<button onclick="goCart()">🛒 View Cart</button>
+
+<div class="products">
+
+<div class="card">
+<h3>ठकुआ</h3>
+<p>₹120 / kg</p>
+<input type="number" id="q1">
+<button onclick="addToCart('ठकुआ',120,'q1')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>निमकी</h3>
+<p>₹130 / kg</p>
+<input type="number" id="q2">
+<button onclick="addToCart('निमकी',130,'q2')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>खस्ता</h3>
+<p>₹140 / kg</p>
+<input type="number" id="q3">
+<button onclick="addToCart('खस्ता',140,'q3')">Add to Cart</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+// ✅ Add to Cart
+function addToCart(product, price, id){
+
+  let qty = document.getElementById(id).value;
+
+  if(!qty || qty <= 0){
+    alert("Quantity डालो");
+    return;
+  }
+
+  qty = Number(qty);
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    product: product,
+    price: price,
+    quantity: qty,
+    total: price * qty
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Added to Cart 🛒");
+}
+
+// ✅ Go to Cart
+function goCart(){
+  window.location.href = "cart.html";
+}
+
+</script>
+
+</body>
+</html>

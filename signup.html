@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Signup - DesiSwaad</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: url('bg.jpg') no-repeat center/cover;
+}
+
+/* Full Center */
+.overlay{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: rgba(0,0,0,0.75);
+}
+
+/* Bigger Box */
+.box{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  padding:40px;
+  border-radius:15px;
+  width:350px;
+  text-align:center;
+  color:white;
+  box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+/* Title */
+h2{
+  margin-bottom:20px;
+  font-size:28px;
+}
+
+/* Inputs */
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+  font-size:14px;
+}
+
+/* Button */
+button{
+  width:100%;
+  padding:12px;
+  background: linear-gradient(45deg,#ff9800,#ff5722);
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* Link */
+.link{
+  margin-top:15px;
+  font-size:14px;
+  color:#ddd;
+  cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="box">
+
+<h2>Signup</h2>
+
+<input type="text" id="name" placeholder="Username">
+<input type="email" id="email" placeholder="Email">
+<input type="text" id="address" placeholder="Address">
+<input type="text" id="mobile" placeholder="Mobile">
+<input type="password" id="pass" placeholder="Password">
+
+<button onclick="signup()">Create Account</button>
+
+<div class="link" onclick="goLogin()">Already user? Login</div>
+
+</div>
+
+</div>
+
+<script>
+function signup(){
+  let user = { name: name.value, pass: pass.value };
+  localStorage.setItem("user", JSON.stringify(user));
+  alert("Signup Successful!");
+  window.location.href="login.html";
+}
+function goLogin(){
+  window.location.href="login.html";
+}
+</script>
+
+</body>
+</html>

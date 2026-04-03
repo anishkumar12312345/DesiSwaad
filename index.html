@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DesiSwaad</title>
+
+<style>
+body {
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+
+  /* 👉 अपना background image */
+  background: url('bg.jpg') no-repeat center/cover;
+}
+
+/* Dark cinematic overlay */
+.overlay {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background: rgba(0,0,0,0.75);
+}
+
+/* 🔥 GOLDEN 3D LOGO */
+.logo {
+  font-size:70px;
+  font-weight:900;
+  letter-spacing:2px;
+
+  color: #d4af37;
+
+  text-shadow:
+    0 2px 0 #a67c00,
+    0 4px 0 #8c6b00,
+    0 6px 0 #6e5500,
+    0 10px 15px rgba(0,0,0,0.8),
+    0 0 20px rgba(255,215,0,0.6);
+
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth floating animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Tagline */
+.tagline {
+  margin-top:15px;
+  font-size:22px;
+  color:#ddd;
+  letter-spacing:1px;
+}
+
+/* Buttons */
+.buttons {
+  margin-top:35px;
+}
+
+button {
+  padding:12px 28px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+/* Button Styles */
+.login {
+  background:#ff9800;
+  color:white;
+}
+
+.signup {
+  background:#4caf50;
+  color:white;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="logo">DesiSwaad</div>
+
+<div class="tagline">देश का असली स्वाद</div>
+
+<div class="buttons">
+<button class="login" onclick="goLogin()">Sign Up</button>
+<button class="signup" onclick="goSignup()">Login</button>
+</div>
+
+</div>
+
+<script>
+function goSignup(){
+  window.location.href = "signup.html";
+}
+
+function goLoginLogin(){
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

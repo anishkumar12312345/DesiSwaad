@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart - DesiSwaad</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: url('bg.jpg') no-repeat center/cover;
+}
+
+.overlay{
+  min-height:100vh;
+  background: rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.container{
+  background: rgba(255,255,255,0.1);
+  padding:30px;
+  border-radius:15px;
+  width:350px;
+  text-align:center;
+  color:white;
+}
+
+h1{
+  color:#ffcc00;
+}
+
+.box{
+  background: rgba(255,255,255,0.1);
+  margin:10px 0;
+  padding:10px;
+  border-radius:10px;
+}
+
+button{
+  padding:10px 20px;
+  margin:10px;
+  border:none;
+  cursor:pointer;
+}
+
+.back{
+  background:gray;
+}
+
+.pay{
+  background:green;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="container">
+
+<h1>Your Cart 🛒</h1>
+
+<div id="items"></div>
+
+<h2 id="total"></h2>
+
+<button class="back" onclick="goBack()">⬅ Back</button>
+<button class="pay" onclick="goPayment()">💳 Pay</button>
+
+</div>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let html="";
+let total=0;
+
+cart.forEach(item=>{
+  if(!item.product) return;
+
+  html += `<div class="box">
+    ${item.product} - ${item.quantity}kg = ₹${item.total}
+  </div>`;
+
+  total += item.total;
+});
+
+document.getElementById("items").innerHTML = html;
+document.getElementById("total").innerText = "Total: ₹" + total;
+
+function goBack(){
+  window.location.href = "main.html";
+}
+
+function goPayment(){
+  window.location.href = "payment.html";
+}
+
+</script>
+
+</body>
+</html>

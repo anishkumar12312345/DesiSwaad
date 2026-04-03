@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login - DesiSwaad</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: url('bg.jpg') no-repeat center/cover;
+}
+
+.overlay{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: rgba(0,0,0,0.75);
+}
+
+.box{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  padding:40px;
+  border-radius:15px;
+  width:350px;
+  text-align:center;
+  color:white;
+  box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+h2{
+  margin-bottom:20px;
+  font-size:28px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background: linear-gradient(45deg,#4caf50,#8bc34a);
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.link{
+  margin-top:15px;
+  font-size:14px;
+  color:#ddd;
+  cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="box">
+
+<h2>Login</h2>
+
+<input type="text" id="name" placeholder="Username">
+<input type="password" id="pass" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<div class="link" onclick="goSignup()">New user? Signup</div>
+
+</div>
+
+</div>
+
+<script>
+function login(){
+  let savedUser = JSON.parse(localStorage.getItem("user"));
+
+  if(savedUser &&
+     savedUser.name == name.value &&
+     savedUser.pass == pass.value){
+      alert("Login Successful!");
+      window.location.href="home.html";
+  } else {
+      alert("Wrong details");
+  }
+}
+function goSignup(){
+  window.location.href="signup.html";
+}
+</script>
+
+</body>
+</html>

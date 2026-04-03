@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment - DesiSwaad</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: url('images/bg.jpg') no-repeat center/cover;
+}
+
+/* dark overlay */
+.overlay{
+  height:100vh;
+  background: rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* main box */
+.box{
+  background: rgba(255,255,255,0.1);
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  color:white;
+  width:300px;
+  backdrop-filter: blur(10px);
+}
+
+/* heading */
+h1{
+  color:#ffcc00;
+}
+
+/* amount */
+.amount{
+  margin:15px 0;
+  font-size:20px;
+  color:#00ffcc;
+}
+
+/* buttons */
+button{
+  display:block;
+  width:200px;
+  margin:12px auto;
+  padding:12px;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  border-radius:8px;
+}
+
+/* COD */
+.cod{
+  background:orange;
+}
+
+/* UPI */
+.upi{
+  background:green;
+}
+
+/* back */
+.back{
+  background:gray;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="box">
+
+<h1>Select Payment 💳</h1>
+
+<div id="amount" class="amount"></div>
+
+<button class="cod" onclick="cod()">Cash on Delivery</button>
+
+<button class="upi" onclick="upi()">UPI Payment</button>
+
+<button class="back" onclick="goBack()">⬅ Back</button>
+
+</div>
+
+</div>
+
+<script>
+
+// 👉 cart से total amount निकालो
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
+
+cart.forEach(item=>{
+  total += item.total;
+});
+
+// 👉 amount दिखाओ
+document.getElementById("amount").innerText = "Total Amount: ₹" + total;
+
+
+// ✅ Cash on Delivery
+function cod(){
+
+  if(total <= 0){
+    alert("Cart Empty ❌");
+    return;
+  }
+
+  alert("Order Placed (Cash on Delivery) ✅");
+
+  localStorage.removeItem("cart");
+
+  window.location.href = "success.html";
+}
+
+
+// ✅ UPI Payment page पर भेजो
+function upi(){
+
+  if(total <= 0){
+    alert("Cart Empty ❌");
+    return;
+  }
+
+  window.location.href = "upi.html";
+}
+
+
+// 🔙 Back
+function goBack(){
+  window.location.href = "cart.html";
+}
+
+</script>
+
+</body>
+</html>

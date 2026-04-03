@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UPI Payment</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: url('bg.jpg') no-repeat center/cover;
+}
+
+.overlay{
+  height:100vh;
+  background: rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.box{
+  background: rgba(255,255,255,0.1);
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  color:white;
+  width:300px;
+}
+
+h1{
+  color:#00ff88;
+}
+
+input{
+  width:90%;
+  padding:10px;
+  margin:10px;
+}
+
+button{
+  padding:10px 20px;
+  margin-top:10px;
+  border:none;
+  cursor:pointer;
+}
+
+.pay{
+  background:green;
+}
+
+.back{
+  background:gray;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="box">
+
+<h1>UPI Payment</h1>
+
+<p>UPI ID: <b>yourupi@okaxis</b></p>
+
+<h3 id="amount"></h3>
+
+<input type="text" placeholder="Enter UPI ID (user)">
+
+<button class="pay" onclick="payNow()">Pay Now</button>
+<button class="back" onclick="goBack()">Back</button>
+
+</div>
+
+</div>
+
+<script>
+
+// 👉 cart से amount निकालो
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
+
+cart.forEach(item=>{
+  total += item.total;
+});
+
+document.getElementById("amount").innerText = "Pay ₹" + total;
+
+// 👉 payment action
+function payNow(){
+
+  if(total <= 0){
+    alert("No amount!");
+    return;
+  }
+
+  alert("Payment Successful ✅");
+
+  localStorage.removeItem("cart");
+
+  window.location.href = "success.html";
+}
+
+function goBack(){
+  window.location.href = "payment.html";
+}
+
+</script>
+
+</body>
+</html>
