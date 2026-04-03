@@ -4,109 +4,83 @@
 <title>Signup - DesiSwaad</title>
 
 <style>
-body{
-  margin:0;
-  font-family: Arial;
-  background: url('bg.jpg') no-repeat center/cover;
+body {
+    margin: 0;
+    font-family: Arial;
+    background: url("bg.jpg") no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Full Center */
-.overlay{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: rgba(0,0,0,0.75);
+.box {
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    width: 320px;
 }
 
-/* Bigger Box */
-.box{
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(12px);
-  padding:40px;
-  border-radius:15px;
-  width:350px;
-  text-align:center;
-  color:white;
-  box-shadow:0 0 25px rgba(0,0,0,0.5);
+h2 { color: white; }
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: none;
 }
 
-/* Title */
-h2{
-  margin-bottom:20px;
-  font-size:28px;
-}
-
-/* Inputs */
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:none;
-  border-radius:8px;
-  font-size:14px;
-}
-
-/* Button */
-button{
-  width:100%;
-  padding:12px;
-  background: linear-gradient(45deg,#ff9800,#ff5722);
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  cursor:pointer;
-  margin-top:10px;
-}
-
-button:hover{
-  transform:scale(1.05);
-}
-
-/* Link */
-.link{
-  margin-top:15px;
-  font-size:14px;
-  color:#ddd;
-  cursor:pointer;
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: orange;
+    font-size: 16px;
+    cursor: pointer;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="overlay">
-
 <div class="box">
+    <h2>Signup</h2>
 
-<h2>Signup</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="address" placeholder="Address">
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="mobile" placeholder="Mobile Number">
 
-<input type="text" id="name" placeholder="Username">
-<input type="email" id="email" placeholder="Email">
-<input type="text" id="address" placeholder="Address">
-<input type="text" id="mobile" placeholder="Mobile">
-<input type="password" id="pass" placeholder="Password">
-
-<button onclick="signup()">Create Account</button>
-
-<div class="link" onclick="goLogin()">Already user? Login</div>
-
-</div>
-
+    <button onclick="signup()">Create Account</button>
 </div>
 
 <script>
+
 function signup(){
-  let user = { name: name.value, pass: pass.value };
-  localStorage.setItem("user", JSON.stringify(user));
-  alert("Signup Successful!");
-  window.location.href="login.html";
+
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    let address = document.getElementById("address").value;
+    let email = document.getElementById("email").value;
+    let mobile = document.getElementById("mobile").value;
+
+    // Save all data
+    localStorage.setItem("username", user);
+    localStorage.setItem("password", pass);
+    localStorage.setItem("address", address);
+    localStorage.setItem("email", email);
+    localStorage.setItem("mobile", mobile);
+
+    alert("Signup Successful!");
+
+    // Go to login
+    window.location.href = "login.html";
 }
-function goLogin(){
-  window.location.href="login.html";
-}
+
 </script>
 
 </body>
