@@ -4,104 +4,93 @@
 <title>Login - DesiSwaad</title>
 
 <style>
-body{
-  margin:0;
-  font-family: Arial;
-  background: url('bg.jpg') no-repeat center/cover;
+body {
+    margin: 0;
+    font-family: Arial;
+    background: url("bg.jpg") no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.overlay{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: rgba(0,0,0,0.75);
+.box {
+    background: rgba(0,0,0,0.7);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
 }
 
-.box{
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(12px);
-  padding:40px;
-  border-radius:15px;
-  width:350px;
-  text-align:center;
-  color:white;
-  box-shadow:0 0 25px rgba(0,0,0,0.5);
+h2 {
+    color: white;
 }
 
-h2{
-  margin-bottom:20px;
-  font-size:28px;
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
 }
 
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:none;
-  border-radius:8px;
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: lightgreen;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-button{
-  width:100%;
-  padding:12px;
-  background: linear-gradient(45deg,#4caf50,#8bc34a);
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  cursor:pointer;
-}
-
-button:hover{
-  transform:scale(1.05);
-}
-
-.link{
-  margin-top:15px;
-  font-size:14px;
-  color:#ddd;
-  cursor:pointer;
+.signup {
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="overlay">
-
 <div class="box">
+    <h2>Login</h2>
 
-<h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
 
-<input type="text" id="name" placeholder="Username">
-<input type="password" id="pass" placeholder="Password">
+    <button onclick="login()">Login</button>
 
-<button onclick="login()">Login</button>
-
-<div class="link" onclick="goSignup()">New user? Signup</div>
-
-</div>
-
+    <!-- SIGNUP OPTION -->
+    <div class="signup" onclick="goSignup()">
+        New user? Signup
+    </div>
 </div>
 
 <script>
-function login(){
-  let savedUser = JSON.parse(localStorage.getItem("user"));
 
-  if(savedUser &&
-     savedUser.name == name.value &&
-     savedUser.pass == pass.value){
-      alert("Login Successful!");
-      window.location.href="home.html";
-  } else {
-      alert("Wrong details");
-  }
+// LOGIN FUNCTION
+function login(){
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    let savedUser = localStorage.getItem("username");
+    let savedPass = localStorage.getItem("password");
+
+    if(user === savedUser && pass === savedPass){
+        alert("Login Success");
+        window.location.href = "home.html";
+    } else {
+        alert("Invalid Login");
+    }
 }
+
+// GO TO SIGNUP PAGE
 function goSignup(){
-  window.location.href="signup.html";
+    window.location.href = "signup.html";
 }
+
 </script>
 
 </body>
